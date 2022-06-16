@@ -13,17 +13,27 @@ namespace EasyTabsExample
 {
     public partial class MainForm : Form
     {
-        protected TitleBarTabs ParentTabs
+        protected AppContainer ParentTabs
         {
             get
             {
-                return (ParentForm as TitleBarTabs);
+                return (ParentForm as AppContainer);
             }
         }
 
         public MainForm()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ParentTabs.AddNewTab(new MainForm(), new AppContainer());
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ParentTabs.AddNewTab();
         }
     }
 }
