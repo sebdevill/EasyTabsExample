@@ -28,12 +28,18 @@ namespace EasyTabsExample
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ParentTabs.AddNewTab(new MainForm(), new AppContainer());
+            ParentTabs.AddNewTabToNewWindow(new MainForm());
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             ParentTabs.AddNewTab();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            int myIdx = ParentTabs.SelectedTabIndex;
+            ParentTabs.ReplaceTab(myIdx, new GreenScreen());
         }
     }
 }

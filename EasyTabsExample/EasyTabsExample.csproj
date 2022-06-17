@@ -74,24 +74,33 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppContainer.cs">
+    <Compile Include="Forms\AppContainer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AppContainer.Designer.cs">
+    <Compile Include="Forms\AppContainer.Designer.cs">
       <DependentUpon>AppContainer.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Forms\GreenScreen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    <Compile Include="Forms\GreenScreen.Designer.cs">
+      <DependentUpon>GreenScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AppContainer.resx">
+    <EmbeddedResource Include="Forms\AppContainer.resx">
       <DependentUpon>AppContainer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <EmbeddedResource Include="Forms\GreenScreen.resx">
+      <DependentUpon>GreenScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

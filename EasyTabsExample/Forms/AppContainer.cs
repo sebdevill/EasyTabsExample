@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EasyTabs;
+using Microsoft.WindowsAPICodePack.Taskbar;
 
 namespace EasyTabsExample
 {
@@ -48,14 +49,17 @@ namespace EasyTabsExample
         /// </summary>
         public void AddNewTab(Form tabContent)
         {
-            AddNewTab(tabContent, this);
+            this.Tabs.Add(CreateTab(tabContent, this));
+            this.SelectedTabIndex = this.Tabs.Count - 1;
+            this.ResizeTabContents();
         }
 
         /// <summary>
-        /// Opens the provided form in a new tab in the provided window
+        /// Opens the provided form in a new tab in a new window
         /// </summary>
-        public void AddNewTab(Form tabContent, AppContainer newWindow)
+        public void AddNewTabToNewWindow(Form tabContent)
         {
+            AppContainer newWindow = new AppContainer();
             TitleBarTab _tornTab = CreateTab(tabContent, newWindow);  // in leu of calling _tornTab.Parent = newWindow;
 
             Screen screen = Screen.AllScreens.First(s => s.WorkingArea.Contains(Cursor.Position));
@@ -82,6 +86,14 @@ namespace EasyTabsExample
             newWindow.Tabs.Add(_tornTab);
             newWindow.SelectedTabIndex = 0;
             newWindow.ResizeTabContents();
+        }
+
+        public void ReplaceTab(int tabIdx, Form tabContent)
+        {
+            TitleBarTab tabToClose = this.Tabs[tabIdx];
+            this.Tabs.Insert(tabIdx, CreateTab(tabContent, this));
+            this.SelectedTabIndex = tabIdx; // This allows the new tab to render properly
+            tabToClose.Content.Close(); // This is the best way to close a tab because it also removes it from the taskbar AeroPeek
         }
     }
 }
